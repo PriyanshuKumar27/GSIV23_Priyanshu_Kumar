@@ -1,7 +1,4 @@
 .card {
-  position: relative;
-  top: 0;
-  left: 0;
   display: flex;
   flex-wrap: wrap;
   align-content: flex-start;
@@ -15,6 +12,7 @@
   border: 1px solid rgba(var(--lightGrey), 1);
   background-color: #fff;
   box-sizing: border-box;
+  margin: 10px;
 }
 .wrapper {
   width: 100%;
@@ -28,10 +26,8 @@
 }
 .card-content {
   width: 100%;
-  padding: 26px 10px 12px;
   position: relative;
   white-space: normal;
-  display: flex;
   align-content: flex-start;
   flex-wrap: wrap;
 }

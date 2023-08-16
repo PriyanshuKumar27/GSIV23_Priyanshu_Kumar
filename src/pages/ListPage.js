@@ -29,9 +29,11 @@ const ListPage = () => {
       const data = await response.json();
 
       setItems((prevItems) => [...prevItems, ...data.results]);
+      console.log(items);
       setPage((prevPage) => prevPage + 1);
     } catch (error) {
       setError(error);
+      console.log(error);
     } finally {
       setIsLoading(false);
     }
@@ -55,18 +57,18 @@ const ListPage = () => {
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [isLoading]);
+  }, [isLoading, handleScroll]);
 
   return (
     <div className="page-wrapper">
-      <Card
-        poster_path={"/4m1Au3YkjqsxF8iwQy0fPYSxE0h.jpg"}
-        title={"Meg 2: The Trench"}
-        rating={"7"}
-        overview={
-          "An exploratory dive into the deepest depths of the ocean of a daring research team spirals into chaos when a malevolent mining operation threatens their mission and forces them into a high-stakes battle for survival."
-        }
-      />
+      {items.map((item) => (
+        <Card
+          poster_path={item.poster_path}
+          title={item.title}
+          rating={item.vote_average}
+          overview={item.overview}
+        />
+      ))}
       {isLoading && <p>Loading...</p>}
       {error && <p>Error: {error.message}</p>}
     </div>

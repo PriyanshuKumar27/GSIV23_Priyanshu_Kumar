@@ -11,7 +11,11 @@ const Card = ({ poster_path, title, rating, overview }) => {
           />
         </div>
       </div>
-      <div className="card-content">Description</div>
+      <div className="card-content">
+        <div>{title}</div>
+        <div>{`Rating ${rating}`}</div>
+        <div>{overview}</div>
+      </div>
     </div>
   );
 };
